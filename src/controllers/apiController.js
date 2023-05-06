@@ -55,13 +55,20 @@ let get_formula_data = async (req, res) => {
 let getresult = async (req, res) => {
     let DataAccount = await ApiService.getresult(req.query.url, req.query.end)
     return res.status(200).send(DataAccount)
-
-
-
+}
+function sleep(time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+}
+let check_key = async (req, res) => {
+    let check_key = await ApiService.check_key(req.query.key)
+    sleep(4000).then(() => {
+        // Do something after the sleep!
+        return res.status(200).send(check_key)
+    });
 
 }
-
 module.exports = {
+    check_key: check_key,
     getresult: getresult,
     deleteaccount: deleteaccount,
     getAccountKey: getAccountKey,

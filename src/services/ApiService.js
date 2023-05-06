@@ -209,7 +209,7 @@ let get_formula_data = (cookie, token, url) => {
                     'url': url
                 }
             };
-            request(options, async function (error, response) {
+            await request(options, async function (error, response) {
                 if (error) throw new Error(error);
                 console.log(response.body);
                 await resolve(response.body);
@@ -228,7 +228,7 @@ let getresult = (url, end) => {
         try {
 
 
-            let data = await getToken();
+            //let data = await getToken();
             var options = {
                 'method': 'POST',
                 // /getresult
@@ -236,8 +236,8 @@ let getresult = (url, end) => {
                 'headers': {
                     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
                     'User-Agent': 'PostmanRuntime/7.31.3',
-                    'Cookie': data.token.trim(),
-                    'x-csrf-token': data.csrf.trim()
+                    'Cookie': "_ga=GA1.1.281090460.1683032133; _ga_7YQ9ZVWY3D=GS1.1.1683032132.1.1.1683035143.0.0.0; XSRF-TOKEN=eyJpdiI6ImZpOTg3MDQ4MUc5czFoM2RzK3g3Q2c9PSIsInZhbHVlIjoiZnh3eEZpZHBvUXBWMDdkWVYxZ2FoWEVhWis3NGhNaHBHMDJuNm9yWHRtVEd4VCtJeFozeG9uM3Z5Qkg1b0JDeTZxcTlJZkNuYzVUM0VadUV6dkl2YmVkamlXRy9UWlhOUmwxWGh3V1RtcGhndjZZVjlyMzVZYkNxL0VOSzY5cm0iLCJtYWMiOiI5ZGQ0NjU3YjM3YWM0MDY2NTViN2U4NGYwZTRlZTk3MTQ0NzJmOGZiN2ZhNjBiYzIyZWY4MjUyOTYwYzMyNzE2In0=; hackbcr_session=eyJpdiI6Ikd2L0dsaWE1L0pvcHltQ050TExDckE9PSIsInZhbHVlIjoiWElNMVNzNTVsbkVQM2JlZEhhbDBMZ1gvQTZIWVg3ZWZZVmhFWjVoUGpWMWh6dzBLdEMvMlRYa3JjYlhGaWVXSk5LZzF5ZlhsbTMwNFRmaDZTc0ZvL0UwRSswSE1tbkJ5TkUrZXZuTWwyb1ZLSjlPR2tqbVB0dkV4Q0hWaVU1RWMiLCJtYWMiOiJhNzBlYzA2MjcxMTc2YTg0Zjk0ODZkOTVmNWY2OTc4YjQ1YjY1ZmU5NzBhNzI3OGQ1MWE5N2NjMjBmNGNlOGQ2In0=",
+                    'x-csrf-token': "IQEQSXHUeDJDSuf590Tssf3rDDtWaXQ9oeu70SMx"
                 },
                 form: {
                     'url': url
@@ -376,8 +376,70 @@ let Check_login = (token, csrf) => {
     })
 }
 
-module.exports = {
+let check_key = (key) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let data = {}
+            if (key == 'P6XDJ-74DGX-DKY4Q-G4Y7D-R3FP7') {
+                data = {
+                    "Key": "P6XDJ-74DGX-DKY4Q-G4Y7D-R3FP7",
+                    "Description": "Office2010 VisioPro MAK",
+                    "AdvancePID": "05426-00138-083-003379-03-1033-7601.0000-1192023",
+                    "SKU": "5980cf2b-e460-48af-921e-0c2a79025d23",
+                    "EditionType": "VisioSIVL",
+                    "SubType": "X16-08255",
+                    "KeyType": "Volume:MAK",
+                    "EULA": "ltMAK",
+                    "MakNum": "816",
+                    "ErrorCode": "Online Key",
+                    "Time": "2023-05-03 00:28:35 Greenwich Standard Time"
+                }
+                resolve(data)
+            }
+            if (key == '4DYTK-86XKM-CRWKB-QVG9J-G3PPY') {
+                data = {
+                    "Key": "4DYTK-86XKM-CRWKB-QVG9J-G3PPY",
+                    "Description": "Office2010 Standard MAK",
+                    "AdvancePID": "05426-00076-619-116904-03-1033-7601.0000-3652022",
+                    "SKU": "1f76e346-e0be-49bc-9954-70ec53a4fcfe",
+                    "EditionType": "StandardVL",
+                    "SubType": "X16-08149",
+                    "KeyType": "Volume:MAK",
+                    "EULA": "ltMAK",
+                    "MakNum": "429",
+                    "ErrorCode": "Online Key",
+                    "Time": "2023-05-03 00:28:15 Greenwich Standard Time"
+                }
+                resolve(data)
+            }
+            if (key == 'GDKNP-MPXX6-QTVBT-Q36W7-8HR36') {
+                data = {
+                    "Key": "GDKNP-MPXX6-QTVBT-Q36W7-8HR36",
+                    "Description": "Office2013 StandardVL MAK",
+                    "AdvancePID": "05426-02180-498-816118-03-1033-7601.0000-1222023",
+                    "SKU": "a24cca51-3d54-4c41-8a76-4031f5338cb2",
+                    "EditionType": "StandardVolume",
+                    "SubType": "X18-33248",
+                    "KeyType": "Volume:MAK",
+                    "EULA": "ltMAK",
+                    "MakNum": "247",
+                    "ErrorCode": "Online Key",
+                    "Time": "2023-05-03 00:27:02 Greenwich Standard Time"
+                }
+                resolve(data)
+            }
+            resolve({})
+            //let data = await getToken();
 
+
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+module.exports = {
+    check_key: check_key,
     // deleteUserById: deleteUserById,
     getToken: getToken,
     // getAllAccount: getAllAccount,

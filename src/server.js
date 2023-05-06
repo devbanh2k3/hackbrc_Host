@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 viewEngine(app);
 initWebRoutes(app);
 
-connectDB();
+// connectDB();
 
 
 
